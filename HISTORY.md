@@ -1,3 +1,11 @@
+## 0.5.0 (2012-03-19)
+
+* Basic support for App Engine SDK 1.6.3.1. Added servlet LocalApiProxy property
+  to container to fix LocalChannelServlet (thanks to Christoph Mewes).
+* Added option to use high replication datastore localy (thanks to Christoph
+  Mewes).
+
+
 ## 0.4.7 (2012-02-13)
 
 * Fixed a bug in the application order of `:after-load` hooks (thanks to Shawn
