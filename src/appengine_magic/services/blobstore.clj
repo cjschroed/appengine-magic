@@ -87,5 +87,9 @@
 
 
 (if (= :interactive (core/appengine-environment-type))
-    (load "blobstore_local")
-    (load "blobstore_google"))
+		(do
+			(.println System/out "Loading blobstore functions for local environment")
+	    (load "blobstore_local"))
+		(do
+			(.println System/out "Loading blobstore functions for production environment")
+	    (load "blobstore_google")))

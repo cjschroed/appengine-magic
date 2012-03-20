@@ -43,5 +43,9 @@
 
 
 (if (= :interactive (appengine-environment-type))
-    (load "core_local")
-    (load "core_google"))
+    (do
+			(.println System/out "Loading core functions for local environment") 
+			(load "core_local"))
+		(do
+			(.println System/out "Loading core functions for production environment") 
+    	(load "core_google")))
