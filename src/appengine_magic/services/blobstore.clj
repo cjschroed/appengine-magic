@@ -86,10 +86,11 @@
                :payload payload)))
 
 
-(if (= :interactive (core/appengine-environment-type))
-		(do
-			(.println System/out "Loading blobstore functions for local environment")
-	    (load "blobstore_local"))
-		(do
-			(.println System/out "Loading blobstore functions for production environment")
-	    (load "blobstore_google")))
+;(if (= :interactive (core/appengine-environment-type))
+;		(do
+;			(.println System/out "Loading blobstore functions for local environment")
+	    (load "blobstore_local")
+;)
+;		(do
+;			(.println System/out "Loading blobstore functions for production environment")
+;	    (load "blobstore_google")))
