@@ -26,7 +26,7 @@
     (getVersionId [] @*current-app-version*)))
 
 
-(defn appengine-init [#^File dir, port high-replication in-memory]
+(defn appengine-init [#^File dir, port high-replication in-memory cloud-sql]
   (let [appengine-web-file (File. dir "WEB-INF/appengine-web.xml")
         application-id (if (.exists appengine-web-file)
                            (first (xpath-value appengine-web-file "//application"))
@@ -50,6 +50,14 @@
 
     ;; Set datastore properties for optional features
     (.setProperty api-proxy "datastore.no_storage" (str in-memory))
+		;; set properties for cloud sql dev server emulation
+		(if cloud-sql
+			(do
+				(.setProperty api-proxy "rdbms.server" "local")
+				(.setProperty api-proxy "rdbms.driver" "com.mysql.jdbc.Driver")
+				(.setProperty api-proxy "rdbms.url" (str "jdbc:mysql://localhost:3306/"(:dbname cloud-sql) 
+																									"?user=" (:user cloud-sql)
+																									"&password=" (:password cloud-sql)))))
     (if high-replication
       (.setProperty api-proxy "datastore.default_high_rep_job_policy_unapplied_job_pct" "20"))
 

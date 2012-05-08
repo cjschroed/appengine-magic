@@ -85,11 +85,11 @@
 (defonce ^{:dynamic true} *server* (atom nil))
 
 
-(defn start [appengine-app & {:keys [port join? high-replication in-memory]
-                              :or {port 8080, join? false, high-replication false, in-memory false}}]
+(defn start [appengine-app & {:keys [port join? high-replication in-memory cloud-sql]
+                              :or {port 8080, join? false, high-replication false, in-memory false, cloud-sql nil}}]
   (let [war-root (java.io.File. (:war-root appengine-app))
         handler-servlet (servlet (:handler appengine-app))]
-    (appengine-init war-root port high-replication in-memory)
+    (appengine-init war-root port high-replication in-memory cloud-sql)
     (reset!
      *server*
      (jetty/start
