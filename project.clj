@@ -1,4 +1,4 @@
-(defproject org.clojars.cjschroed/appengine-magic "0.5.0.4"
+(defproject org.clojars.cjschroed/appengine-magic "0.5.0.6"
   :description "Google App Engine library for Clojure."
   :min-lein-version "1.7.0"
   :repositories {"releases" "http://appengine-magic-mvn.googlecode.com/svn/releases/"
@@ -8,8 +8,8 @@
                  [org.apache.commons/commons-exec "1.1"]
                  ;; App Engine supporting essentials
                  [javax.servlet/servlet-api "2.5"]
-                 [commons-io "1.4"]
-                 [commons-codec "1.4"]
+                 [commons-io "2.4"]
+                 [commons-codec "1.6"]
                  [commons-fileupload "1.2.1"]
                  ;; App Engine administrative interface support
                  [tomcat/jasper-runtime "5.0.28"]
