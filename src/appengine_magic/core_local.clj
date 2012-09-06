@@ -19,6 +19,16 @@
 ;;; appengine-magic core API functions
 ;;; ----------------------------------------------------------------------------
 
+(def state (atom {}))
+
+(defn get-state 
+	[key]
+  (@state key))
+
+(defn update-state 
+	[key val]
+  (swap! state assoc key val))
+
 (defn default-war-root []
   (-> (clojure.lang.RT/baseLoader)
       (.getResource ".")
@@ -85,10 +95,11 @@
 (defonce ^{:dynamic true} *server* (atom nil))
 
 
-(defn start [appengine-app & {:keys [port join? high-replication in-memory cloud-sql]
-                              :or {port 8080, join? false, high-replication false, in-memory false, cloud-sql nil}}]
+(defn start [appengine-app & {:keys [port join? high-replication in-memory cloud-sql minify]
+                              :or {port 8080, join? false, high-replication false, in-memory false, cloud-sql nil, minify true}}]
   (let [war-root (java.io.File. (:war-root appengine-app))
         handler-servlet (servlet (:handler appengine-app))]
+		(update-state "minify" minify)
     (appengine-init war-root port high-replication in-memory cloud-sql)
     (reset!
      *server*
