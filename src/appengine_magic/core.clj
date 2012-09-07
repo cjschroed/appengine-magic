@@ -27,6 +27,15 @@
                            (catch java.security.AccessControlException ace
                              :production)))))
 
+(def state (atom {}))
+
+(defn get-state 
+	[key]
+  (@state key))
+
+(defn update-state 
+	[key val]
+  (swap! state assoc key val))
 
 (defn appengine-app-id []
   (try
