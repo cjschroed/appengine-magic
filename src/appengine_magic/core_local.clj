@@ -111,7 +111,7 @@
 			 "/_ah/admin/datastore" (com.google.apphosting.utils.servlet.DatastoreViewerServlet.)
 			 "/_ah/datastoreViewer" (com.google.apphosting.utils.servlet.DatastoreViewerServlet.)
 			 "/_ah/admin/backends" (com.google.apphosting.utils.servlet.ServersServlet.)
-;			 "/_ah/admin/taskqueueViewer" (com.google.apphosting.utils.servlet.TaskQueueViewerServlet.)
+			 "/_ah/admin/taskqueue" (com.google.apphosting.utils.servlet.TaskQueueViewerServlet.)
 			 "/_ah/admin/xmpp" (com.google.apphosting.utils.servlet.XmppServlet.)
 			 "/_ah/admin/inboundMail" (com.google.apphosting.utils.servlet.InboundMailServlet.)
 			 "/_ah/admin/search" (com.google.apphosting.utils.servlet.SearchServlet.)
