@@ -33,10 +33,13 @@
                                               (_dash prj-application)
                                               prj-servlet))]))]
       (when (= 0 (leiningen.compile/compile project))
+    		(println "delting target libs directory")
         ;; delete existing content of target lib/
         (lancet/delete {:dir (.getPath target-lib-dir)})
+    		(println "preparing target libs directory")
         ;; prepare destination lib/ directory
         (lancet/mkdir {:dir target-lib-dir})
+    		(println "jar the compiled app")
         ;; make a jar of the compiled app, and put it in WEB-INF/lib
         (leiningen.jar/jar (merge project
                                   {:omit-source true
